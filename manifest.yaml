@@ -1,0 +1,46 @@
+name: Angular Server
+version: "1"
+description: Angular Hello World
+roles: [angular,nodeapp1,nodeapp2]
+angular:
+   name: angular server
+   image:
+       name: houssemdocker/angular-app
+       version: v1
+       engine: docker
+   services:
+       - type: NodePort
+         scope: pod
+         ports:
+         - port: 80
+           targetPort: 80
+           protocol: TCP
+           name: web
+nodeapp1:
+   name: angular server
+   image:
+       name: shishirkhandelwal/node-web-app
+       version: latest
+       engine: docker
+   services:
+       - type: NodePort
+         scope: pod
+         ports:
+         - port: 80
+           targetPort: 80
+           protocol: TCP
+           name: web
+nodeapp2:
+   name: angular server
+   image:
+       name: shishirkhandelwal/node-web-app
+       version: latest
+       engine: docker
+   services:
+       - type: NodePort
+         scope: pod
+         ports:
+         - port: 80
+           targetPort: 80
+           protocol: TCP
+           name: web
